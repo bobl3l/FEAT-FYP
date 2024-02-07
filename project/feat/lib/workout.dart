@@ -1,10 +1,10 @@
-import 'package:feat/configuration.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'components/navbar.dart';
-import 'homescreen.dart';
 import 'components/workoutcard.dart';
+import 'customize.dart';
+import 'components/customcard.dart';
 
 class WorkoutPage extends StatefulWidget {
   @override
@@ -20,40 +20,10 @@ class _WorkoutPageState extends State<WorkoutPage> {
       body: Center(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.all(15),
-              margin: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  color: Colors.blueAccent,
-                  borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(25))),
-              height: size.height * 0.18,
-              width: size.width * 0.9,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'You must be here for the first time.\nLet\'s get started with  choosing a workout plan.',
-                    style: GoogleFonts.inter(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: size.width * 0.048),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'customize your own >>',
-                          style: TextStyle(
-                              color: Colors.white,
-                              decoration: TextDecoration.underline,
-                              fontSize: size.width * 0.03),
-                        )),
-                  ),
-                ],
-              ),
+            SizedBox(
+              height: size.height * 0.05,
             ),
+            CustomCard(type: 'workout'),
             Container(
                 margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
                 child: Row(
@@ -126,30 +96,8 @@ class _WorkoutPageState extends State<WorkoutPage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        height: size.height * 0.1,
-        padding: EdgeInsets.all(20),
-        decoration:
-            BoxDecoration(shape: BoxShape.circle, color: primaryLightColor),
-        child: Container(
-          padding: EdgeInsets.all(1),
-          height: size.height * 0.13,
-          decoration:
-              BoxDecoration(shape: BoxShape.circle, color: primaryColor),
-          child: IconButton(
-            icon: Icon(Icons.home_rounded),
-            iconSize: size.width * 0.07,
-            color: primaryDarkColor,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage()),
-              );
-            },
-          ),
-        ),
-      ),
-      bottomNavigationBar: navBar(),
+      floatingActionButton: HomeButton(),
+      bottomNavigationBar: NavBar(),
     );
   }
 }

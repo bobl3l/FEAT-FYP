@@ -288,30 +288,8 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        height: size.height * 0.1,
-        padding: EdgeInsets.all(20),
-        decoration:
-            BoxDecoration(shape: BoxShape.circle, color: primaryLightColor),
-        child: Container(
-          padding: EdgeInsets.all(1),
-          height: size.height * 0.13,
-          decoration:
-              BoxDecoration(shape: BoxShape.circle, color: primaryColor),
-          child: IconButton(
-            icon: Icon(Icons.home_rounded),
-            iconSize: size.width * 0.07,
-            color: primaryDarkColor,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage()),
-              );
-            },
-          ),
-        ),
-      ),
-      bottomNavigationBar: navBar(),
+      floatingActionButton: HomeButton(),
+      bottomNavigationBar: NavBar(),
     );
   }
 }

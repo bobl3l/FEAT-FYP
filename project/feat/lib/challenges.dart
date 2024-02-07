@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'components/navbar.dart';
 import 'homescreen.dart';
+import 'leaderboard.dart';
 
 class ChallengePage extends StatefulWidget {
   @override
@@ -27,12 +28,16 @@ class _ChallengePageState extends State<ChallengePage> {
                   fontWeight: FontWeight.bold,
                   color: primaryDarkColor)),
           ClipRRect(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(30),
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: size.height * 0.0075),
                 child: InkWell(
-                    borderRadius: BorderRadius.circular(25),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Leaderboard()),
+                      );
+                    },
                     child: Image.asset(
                       'assets/diet challenge.png',
                       fit: BoxFit.fitWidth,
@@ -40,11 +45,10 @@ class _ChallengePageState extends State<ChallengePage> {
                     )),
               )),
           ClipRRect(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(30),
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: size.height * 0.0075),
                 child: InkWell(
-                    borderRadius: BorderRadius.circular(25),
                     onTap: () {},
                     child: Image.asset(
                       'assets/running challenge.png',
@@ -53,11 +57,10 @@ class _ChallengePageState extends State<ChallengePage> {
                     )),
               )),
           ClipRRect(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(30),
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: size.height * 0.0075),
                 child: InkWell(
-                    borderRadius: BorderRadius.circular(25),
                     onTap: () {},
                     child: Image.asset(
                       'assets/weightlifting challenge.png',
@@ -68,30 +71,8 @@ class _ChallengePageState extends State<ChallengePage> {
         ],
       )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        height: size.height * 0.1,
-        padding: EdgeInsets.all(20),
-        decoration:
-            BoxDecoration(shape: BoxShape.circle, color: primaryLightColor),
-        child: Container(
-          padding: EdgeInsets.all(1),
-          height: size.height * 0.13,
-          decoration:
-              BoxDecoration(shape: BoxShape.circle, color: primaryColor),
-          child: IconButton(
-            icon: Icon(Icons.home_rounded),
-            iconSize: size.width * 0.07,
-            color: primaryDarkColor,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage()),
-              );
-            },
-          ),
-        ),
-      ),
-      bottomNavigationBar: navBar(),
+      floatingActionButton: HomeButton(),
+      bottomNavigationBar: NavBar(),
     );
   }
 }

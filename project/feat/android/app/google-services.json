@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "713054117733",
+    "project_id": "feat-fyp-e900c",
+    "storage_bucket": "feat-fyp-e900c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713054117733:android:c976a05eb57636e8464b8c",
+        "android_client_info": {
+          "package_name": "com.example.feat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713054117733-c2an8f6el4ec7p4lejce8e3l5vbhc9ft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNBXcZTgbVUUtkH7vcVMd1YLOFf2ceSac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713054117733-c2an8f6el4ec7p4lejce8e3l5vbhc9ft.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "713054117733-7qtetl1j6khuojcaqd40tkclf74el31e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.feat.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,9 @@
+import 'package:feat/homescreen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'constants.dart';
-import 'configuration.dart';
+import 'signup.dart';
+import 'database/auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,6 +11,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -68,9 +72,10 @@ class _LoginPageState extends State<LoginPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 TextFormField(
+                                  controller: email,
                                   decoration: const InputDecoration(
                                       icon: Icon(Icons.account_box_outlined),
-                                      labelText: 'Username',
+                                      labelText: 'Email',
                                       contentPadding: EdgeInsets.all(10)),
                                   onSaved: (String? value) {},
                                   validator: (String? value) {
@@ -81,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                 ),
                                 TextFormField(
+                                  controller: password,
                                   decoration: const InputDecoration(
                                       icon: Icon(Icons.lock_outline_rounded),
                                       labelText: 'Password',
@@ -90,12 +96,24 @@ class _LoginPageState extends State<LoginPage> {
                                 Padding(
                                   padding: EdgeInsets.all(20),
                                   child: FilledButton.tonal(
-                                      onPressed: () {
+                                      onPressed: () async {
+                                        Auth().signin(
+                                            email: email.text,
+                                            password: password.text);
+                                        setState(() {});
+                                        if (FirebaseAuth.instance.currentUser !=
+                                            null) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomePage()),
+                                          );
+                                        }
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Configuration()),
+                                              builder: (context) => HomePage()),
                                         );
                                       },
                                       style: ButtonStyle(
@@ -124,7 +142,13 @@ class _LoginPageState extends State<LoginPage> {
                                   style: TextButton.styleFrom(
                                     textStyle: const TextStyle(fontSize: 20),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SignupPage()),
+                                    );
+                                  },
                                   child: Text(
                                     'No Account? Sign up here.',
                                     style: TextStyle(
