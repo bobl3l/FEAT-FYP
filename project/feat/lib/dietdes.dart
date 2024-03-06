@@ -4,9 +4,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'components/navbar.dart';
 import 'homescreen.dart';
-import 'nutrition.dart';
+import 'dietlist.dart';
 
 class DietDescription extends StatefulWidget {
+  String protein;
+  String fat;
+  String carb;
+  String cal;
+  String name;
+  String time;
+  DietDescription(
+      {required this.protein,
+      required this.fat,
+      required this.carb,
+      required this.cal,
+      required this.name,
+      required this.time});
   @override
   _DietDescriptionState createState() => _DietDescriptionState();
 }
@@ -21,9 +34,8 @@ class _DietDescriptionState extends State<DietDescription> {
         child: Stack(
           children: [
             Image.network(
-              "https://media.istockphoto.com/id/1331293694/photo/determined-african-woman-in-sportswear-exercising-with-elastic-band.jpg?s=612x612&w=0&k=20&c=PdMOtf7-WI9KZ1NmXZDCiDt9CJXnkAzN8DIv6ll44aA=",
+              "https://media.istockphoto.com/id/475511846/vector/kitchen-seamless-pattern-vector-background.jpg?s=612x612&w=0&k=20&c=inpW5Mc2MFyuc7PsMXVY49OUBU39EXekcCNe8xVeI_k=",
               fit: BoxFit.cover,
-              opacity: AlwaysStoppedAnimation(0.65),
               height: size.height,
             ),
             Container(
@@ -58,14 +70,14 @@ class _DietDescriptionState extends State<DietDescription> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              'title',
+                              widget.name,
                               style: GoogleFonts.lalezar(
                                   color: Colors.green.shade400,
                                   fontSize: size.width * 0.065,
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              'short description',
+                              'by FEAT nutrition',
                               style: GoogleFonts.lalezar(
                                   color: Colors.green.shade400,
                                   fontSize: size.width * 0.035,
@@ -75,7 +87,7 @@ class _DietDescriptionState extends State<DietDescription> {
                         ),
                       ),
                       Container(
-                        height: size.height * 0.35,
+                        height: size.height * 0.3,
                         padding: EdgeInsets.all(20),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -94,7 +106,7 @@ class _DietDescriptionState extends State<DietDescription> {
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
-                                      '-- weeks',
+                                      widget.protein + ' g',
                                       style: GoogleFonts.inter(
                                           color: Colors.white,
                                           fontSize: size.width * 0.045,
@@ -111,7 +123,7 @@ class _DietDescriptionState extends State<DietDescription> {
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
-                                      'Beginner',
+                                      widget.carb + ' g',
                                       style: GoogleFonts.inter(
                                           color: Colors.white,
                                           fontSize: size.width * 0.045,
@@ -128,7 +140,7 @@ class _DietDescriptionState extends State<DietDescription> {
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
-                                      'Muscle',
+                                      widget.fat + ' g',
                                       style: GoogleFonts.inter(
                                           color: Colors.white,
                                           fontSize: size.width * 0.045,
@@ -150,7 +162,7 @@ class _DietDescriptionState extends State<DietDescription> {
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
-                                      'day',
+                                      widget.cal + ' kcal',
                                       maxLines: 3,
                                       style: GoogleFonts.inter(
                                           color: Colors.white,
@@ -169,7 +181,7 @@ class _DietDescriptionState extends State<DietDescription> {
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
-                                      'Beginner',
+                                      widget.time + ' min',
                                       style: GoogleFonts.inter(
                                           color: Colors.white,
                                           fontSize: size.width * 0.045,

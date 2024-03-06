@@ -220,11 +220,25 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'Calories',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: GoogleFonts.inter(
+                                    color: Colors.black.withOpacity(0.8),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: size.width * 0.04),
                               ),
-                              Text(
-                                '1300/2000 kcal',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Text.rich(
+                                TextSpan(
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: size.width * 0.035),
+                                    children: [
+                                      TextSpan(
+                                          text: '1000',
+                                          style: TextStyle(
+                                              color: Colors.blueGrey)),
+                                      TextSpan(
+                                        text: ' /2500 kcal',
+                                      ),
+                                    ]),
                               )
                             ],
                           ),
@@ -249,11 +263,25 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'Sleep',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: size.width * 0.04,
+                                    color: Colors.white.withOpacity(0.8)),
                               ),
-                              Text(
-                                '1.0/7.5 hrs',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Text.rich(
+                                TextSpan(
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: size.width * 0.035),
+                                    children: [
+                                      TextSpan(
+                                          text: '1.0',
+                                          style: TextStyle(
+                                              color: Colors.blueGrey)),
+                                      TextSpan(
+                                        text: ' /7.5 hrs',
+                                      ),
+                                    ]),
                               )
                             ],
                           ),
@@ -282,11 +310,25 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'Exercise',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: GoogleFonts.inter(
+                                    color: Colors.white.withOpacity(0.8),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: size.width * 0.04),
                               ),
-                              Text(
-                                '0.5/2.0 hrs',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Text.rich(
+                                TextSpan(
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: size.width * 0.035),
+                                    children: [
+                                      TextSpan(
+                                          text: '1.0',
+                                          style: TextStyle(
+                                              color: Colors.blueGrey)),
+                                      TextSpan(
+                                        text: ' /1.5 hrs',
+                                      ),
+                                    ]),
                               )
                             ],
                           ),
@@ -311,11 +353,25 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'Water',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: GoogleFonts.inter(
+                                    color: Colors.black.withOpacity(0.8),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: size.width * 0.04),
                               ),
-                              Text(
-                                '2.5/5 Litres',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Text.rich(
+                                TextSpan(
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: size.width * 0.035),
+                                    children: [
+                                      TextSpan(
+                                          text: '1.0',
+                                          style: TextStyle(
+                                              color: Colors.blueGrey)),
+                                      TextSpan(
+                                        text: ' /5.0 litres',
+                                      ),
+                                    ]),
                               )
                             ],
                           ),

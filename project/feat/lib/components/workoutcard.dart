@@ -1,9 +1,30 @@
+import 'package:feat/configuration.dart';
 import 'package:flutter/material.dart';
 import 'package:feat/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:feat/workoutdes.dart';
 
 class WorkoutCard extends StatefulWidget {
+  String name;
+  String image;
+  String des;
+  String lvl;
+  String cat;
+  String duration;
+  String frquency;
+  String equipment;
+
+  String rating;
+  WorkoutCard(
+      {required this.name,
+      required this.image,
+      required this.des,
+      required this.cat,
+      required this.lvl,
+      required this.duration,
+      required this.frquency,
+      required this.equipment,
+      required this.rating});
   @override
   _WorkoutCardState createState() => _WorkoutCardState();
 }
@@ -16,7 +37,16 @@ class _WorkoutCardState extends State<WorkoutCard> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => WorkoutDescription()),
+            MaterialPageRoute(
+                builder: (context) => WorkoutDescription(
+                    name: widget.name,
+                    image: widget.image,
+                    des: widget.des,
+                    cat: widget.cat,
+                    lvl: widget.lvl,
+                    duration: widget.duration,
+                    frquency: widget.frquency,
+                    equipment: widget.equipment)),
           );
         },
         child: Stack(
@@ -31,9 +61,7 @@ class _WorkoutCardState extends State<WorkoutCard> {
                     bottomRight: Radius.circular(10),
                     topRight: Radius.circular(30)),
                 image: DecorationImage(
-                    image: NetworkImage(
-                        "https://media.istockphoto.com/id/1331293694/photo/determined-african-woman-in-sportswear-exercising-with-elastic-band.jpg?s=612x612&w=0&k=20&c=PdMOtf7-WI9KZ1NmXZDCiDt9CJXnkAzN8DIv6ll44aA="),
-                    fit: BoxFit.cover),
+                    image: NetworkImage(widget.image), fit: BoxFit.cover),
               ),
             ),
             Container(
@@ -59,7 +87,7 @@ class _WorkoutCardState extends State<WorkoutCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '3 months Pilates for Beginners',
+                    widget.name,
                     style: GoogleFonts.inter(
                         color: Colors.white,
                         fontSize: size.width * 0.05,
@@ -91,7 +119,7 @@ class _WorkoutCardState extends State<WorkoutCard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '12',
+                                  widget.duration,
                                   style: GoogleFonts.inter(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -132,7 +160,7 @@ class _WorkoutCardState extends State<WorkoutCard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '4.8',
+                                  widget.rating,
                                   style: GoogleFonts.inter(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,

@@ -3,8 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:feat/constants.dart';
 
-final db = FirebaseFirestore.instance;
-
 class Auth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 

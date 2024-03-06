@@ -1,0 +1,110 @@
+[
+    {
+        "id":"wk_01",
+        "image":"",
+        "name":"Jim Stoppani's 12-Week Shortcut to Size",
+        "description":"From the labs of Yale University to the most hardcore gyms in America, Jim Stoppani has devoted his entire career to the science of building muscle and burning fat. He's helped millions transform their lives, and now it's your turn",
+        "exercises":[],
+        "duration":"12",
+        "Frquency":"4",
+        "Level":"Beginner",
+        "Category":"Muscle Building",
+        "Equipment":"Gym Equipments"
+    },
+    {
+        "id":"wk_02",
+        "image":"",
+        "name":"Kris Gethin's 4Weeks2Shred",
+        "description":"There's nothing magic here—just lots of hard work. In four brutal weight workouts and three \"active recovery\" sessions a week, you'll burn away the old you and build a new one that you never thought possible. Ready? Let's do this.",
+        "exercises":[{"Monday":["e_01","e_02"],"Tuesday":["e_01","e_02"]}],
+        "duration":"4",
+        "Frquency":"7",
+        "Level":"Intermediate",
+        "Category":"Muscle Building",
+        "Equipment":"Gym Equipments"
+    },
+    {
+        "id":"wk_03",
+        "image":"",
+        "name":"30 Days Out: Craig Capurso's Extreme Cut Trainer",
+        "description":"This is Craig's personal cutting program! It's for anyone who wants to look their best for an event like a physique competition, wedding, reunion, or photo shoot.",
+        "exercises":[],
+        "duration":"5",
+        "Frquency":"6",
+        "Level":"Advanced",
+        "Category":"Lose weight",
+        "Equipment":"Gym Equipments"
+    },
+    {
+        "id":"wk_04",
+        "image":"",
+        "name":"Maximum Muscle: 9-Week Advanced Training for Gains",
+        "description":"If you're ready for a true test of willpower that will completely transform your physique, Abel Albonetti has it for you. Expect tons of volume, crazy dropsets, and hammering every muscle group from every angle.",
+        "exercises":[],
+        "duration":"9",
+        "Frquency":"5",
+        "Level":"Advanced",
+        "Category":"Muscle Building",
+        "Equipment":"Gym Equipments"
+    },
+    {
+        "id":"wk_05",
+        "image":"",
+        "name":"HIIT at Home: 20-Minute No-Weight Interval Workouts",
+        "description":"Looking for a simple, time-efficient interval cardio program that you can do on top of your resistance training workouts? The answer is HIIT at Home. ",
+        "exercises":[],
+        "duration":"6",
+        "Frquency":"6",
+        "Level":"Beginner",
+        "Category":"Lose weight",
+        "Equipment":"Minimal Equipments"
+    },
+    {
+        "id":"wk_06",
+        "image":"",
+        "name":"LiveFit",
+        "description":"This iconic program has shown millions of men and women the transformative power of lifting weights and eating right. It's hard work, but the rewards are life-changing!",
+        "exercises":[],
+        "duration":"12",
+        "Frquency":"5",
+        "Level":"Intermediate",
+        "Category":"Lose weight",
+        "Equipment":"Gym Equipments"
+    },
+    {
+        "id":"wk_07",
+        "image":"",
+        "name":"MFT28: Military Fitness Training",
+        "description":"MFT28 isn't some minor skirmish; it's an all-out war. The late fitness icon and former Army Ranger Greg Plitt will challenge you with new exercises, a unique nutrition plan, high-intensity workouts, and training strategies you've never tried.",
+        "exercises":[],
+        "duration":"4",
+        "Frquency":"11",
+        "Level":"Advanced",
+        "Category":"Performance",
+        "Equipment":"Gym Equipments"
+    },
+    {
+        "id":"wk_08",
+        "image":"",
+        "name":"Train like an Athlete",
+        "description":"Elite athletes in top training facilities don't waste their time in the gym. They focus on building strength, speed, mobility, and conditioning that carries over to the widest array of activities, and that gives them more than it takes out of them. That's how you'll train for this game-changing month!",
+        "exercises":[],
+        "duration":"4",
+        "Frquency":"3",
+        "Level":"Beginner",
+        "Category":"Performance",
+        "Equipment":"Minimal Equipments"
+    },
+    {
+        "id":"wk_09",
+        "image":"",
+        "name":"Triple Threat Hybrid Training Program",
+        "description":"Ready to level up your training? Hybrid training combines heavy barbell lifts, conditioning, and bodybuilding into one high-octane training protocol.",
+        "exercises":[],
+        "duration":"4",
+        "Frquency":"5",
+        "Level":"Intermediate",
+        "Category":"Performance",
+        "Equipment":"Gym Equipments"
+    }
+]

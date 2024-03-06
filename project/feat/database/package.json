@@ -1,0 +1,15 @@
+{
+    "name": "json_to_firebase",
+    "version": "1.0.0",
+    "description": "upload JSON database to Firebase",
+    "main": "uploader.js",
+    "scripts": {
+        "test": "echo \" Error: no test"
+    },
+    "author": "Me Nigga",
+    "license": "ISC",
+    "dependencies": {
+        "firebase": "^10.8.1",
+        "firebase-admin": "^8.13.0"
+    }
+}

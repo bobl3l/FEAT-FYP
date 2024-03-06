@@ -2,99 +2,79 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'components/navbar.dart';
-import 'components/workoutcard.dart';
-import 'customize.dart';
-import 'components/customcard.dart';
 
-class WorkoutPage extends StatefulWidget {
+class Workout extends StatefulWidget {
   @override
-  _WorkoutPageState createState() => _WorkoutPageState();
+  _WorkoutState createState() => _WorkoutState();
 }
 
-class _WorkoutPageState extends State<WorkoutPage> {
+class _WorkoutState extends State<Workout> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: primaryCardColor,
       body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: size.height * 0.05,
+          child: Stack(
+        children: [
+          Image.network(
+            "https://media.istockphoto.com/id/1331293694/photo/determined-african-woman-in-sportswear-exercising-with-elastic-band.jpg?s=612x612&w=0&k=20&c=PdMOtf7-WI9KZ1NmXZDCiDt9CJXnkAzN8DIv6ll44aA=",
+            opacity: AlwaysStoppedAnimation(0.25),
+            fit: BoxFit.fitWidth,
+            width: size.width,
+          ),
+          Container(
+            child: Column(
+              children: [
+                Text('Today\'s Workout',
+                    style: GoogleFonts.inter(
+                        fontSize: size.width * 0.1,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white)),
+                SizedBox(
+                  height: size.height * 0.15,
+                ),
+                Expanded(
+                    flex: 8,
+                    child: Container(
+                        width: size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(50),
+                                topRight: Radius.circular(50))),
+                        child: Padding(
+                          padding: EdgeInsets.all(size.width * 0.06),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text('Title',
+                                    style: GoogleFonts.inter(
+                                        fontSize: size.width * 0.1,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white)),
+                                Text('Descriptions:',
+                                    style: GoogleFonts.inter(
+                                        fontSize: size.width * 0.05,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white)),
+                              ]),
+                        ))),
+                Divider(),
+                Container(
+                    width: size.width,
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8),
+                            topRight: Radius.circular(8))),
+                    child: Row()),
+              ],
             ),
-            CustomCard(type: 'workout'),
-            Container(
-                margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'For Beginners',
-                      style: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'See all >>',
-                        style: GoogleFonts.inter(
-                            color: primaryDarkColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    )
-                  ],
-                )),
-            Container(
-                height: size.height * 0.2,
-                width: size.width,
-                margin: EdgeInsets.symmetric(
-                    horizontal: size.width * 0.05,
-                    vertical: size.height * 0.02),
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    WorkoutCard(),
-                  ],
-                )),
-            Container(
-                margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Advanced Program',
-                      style: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'See all >>',
-                        style: GoogleFonts.inter(
-                            color: primaryDarkColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    )
-                  ],
-                )),
-            Container(
-                height: size.height * 0.2,
-                width: size.width,
-                margin: EdgeInsets.symmetric(
-                    horizontal: size.width * 0.05,
-                    vertical: size.height * 0.02),
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    WorkoutCard(),
-                  ],
-                )),
-          ],
-        ),
-      ),
+          ),
+        ],
+      )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: HomeButton(),
       bottomNavigationBar: NavBar(),

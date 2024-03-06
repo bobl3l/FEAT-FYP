@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:feat/constants.dart';
 import 'package:feat/challenges.dart';
-import 'package:feat/workout.dart';
-import 'package:feat/nutrition.dart';
+import 'package:feat/workoutlist.dart';
+import 'package:feat/dietlist.dart';
 import 'package:feat/profile.dart';
 import 'package:feat/homescreen.dart';
 
@@ -33,8 +33,8 @@ class _NavBarState extends State<NavBar> {
                 )
               : FilledButton(
                   style: ButtonStyle(
-                      maximumSize: MaterialStatePropertyAll(Size(100, 60)),
-                      padding: MaterialStatePropertyAll(EdgeInsets.all(0)),
+                      padding: MaterialStatePropertyAll(
+                          EdgeInsets.symmetric(horizontal: size.width * 0.03)),
                       backgroundColor:
                           MaterialStatePropertyAll(Colors.transparent),
                       foregroundColor:
@@ -44,7 +44,7 @@ class _NavBarState extends State<NavBar> {
                         builder: (context) => index == 0
                             ? ChallengePage()
                             : index == 1
-                                ? WorkoutPage()
+                                ? WorkoutList()
                                 : index == 3
                                     ? NutritionPage()
                                     : ProfilePage()));

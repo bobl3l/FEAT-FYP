@@ -1,5 +1,6 @@
 import 'package:feat/configuration.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_launcher_icons/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'components/navbar.dart';
@@ -7,6 +8,23 @@ import 'homescreen.dart';
 import 'components/workoutcard.dart';
 
 class WorkoutDescription extends StatefulWidget {
+  String name;
+  String image;
+  String des;
+  String lvl;
+  String cat;
+  String duration;
+  String frquency;
+  String equipment;
+  WorkoutDescription(
+      {required this.name,
+      required this.image,
+      required this.des,
+      required this.cat,
+      required this.lvl,
+      required this.duration,
+      required this.frquency,
+      required this.equipment});
   @override
   _WorkoutDescriptionState createState() => _WorkoutDescriptionState();
 }
@@ -21,7 +39,7 @@ class _WorkoutDescriptionState extends State<WorkoutDescription> {
         child: Stack(
           children: [
             Image.network(
-              "https://media.istockphoto.com/id/1331293694/photo/determined-african-woman-in-sportswear-exercising-with-elastic-band.jpg?s=612x612&w=0&k=20&c=PdMOtf7-WI9KZ1NmXZDCiDt9CJXnkAzN8DIv6ll44aA=",
+              widget.image,
               fit: BoxFit.cover,
               opacity: AlwaysStoppedAnimation(0.65),
               height: size.height,
@@ -55,14 +73,14 @@ class _WorkoutDescriptionState extends State<WorkoutDescription> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              'title',
+                              widget.name,
                               style: GoogleFonts.lalezar(
                                   color: Colors.white,
                                   fontSize: size.width * 0.065,
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              'short description',
+                              widget.des,
                               style: GoogleFonts.lalezar(
                                   color: Colors.white,
                                   fontSize: size.width * 0.035,
@@ -88,7 +106,7 @@ class _WorkoutDescriptionState extends State<WorkoutDescription> {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
-                                  '-- weeks',
+                                  widget.duration + ' weeks',
                                   style: GoogleFonts.inter(
                                       color: Colors.white,
                                       fontSize: size.width * 0.045,
@@ -105,7 +123,7 @@ class _WorkoutDescriptionState extends State<WorkoutDescription> {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
-                                  'Beginner',
+                                  widget.lvl,
                                   style: GoogleFonts.inter(
                                       color: Colors.white,
                                       fontSize: size.width * 0.045,
@@ -122,7 +140,7 @@ class _WorkoutDescriptionState extends State<WorkoutDescription> {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
-                                  'Muscle',
+                                  widget.cat,
                                   style: GoogleFonts.inter(
                                       color: Colors.white,
                                       fontSize: size.width * 0.045,
@@ -141,7 +159,7 @@ class _WorkoutDescriptionState extends State<WorkoutDescription> {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
-                                  'days/ week',
+                                  widget.frquency + ' days/ week',
                                   style: GoogleFonts.inter(
                                       color: Colors.white,
                                       fontSize: size.width * 0.045,
@@ -158,7 +176,7 @@ class _WorkoutDescriptionState extends State<WorkoutDescription> {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
-                                  'Beginner',
+                                  widget.equipment,
                                   style: GoogleFonts.inter(
                                       color: Colors.white,
                                       fontSize: size.width * 0.045,

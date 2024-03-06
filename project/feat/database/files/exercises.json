@@ -1,0 +1,266 @@
+[{
+        "id":"e_01",
+        "name":"Bench Press",
+        "image":"https://static.strengthlevel.com/images/silhouettes/bench-press-256x256.png",
+        "reps":"3x5",
+        "type":"gym" 
+    },
+    {
+        "id":"e_02",
+        "name":"Chest Fly",
+        "image":"https://static.strengthlevel.com/images/silhouettes/dumbbell-fly-256x256.png",
+        "reps":"4x12",
+        "type":"gym"   
+    },
+    {
+        "id":"e_03",
+        "name":"Shoulder Press",
+        "image":"https://static.strengthlevel.com/images/silhouettes/shoulder-press-256x256.png",
+        "reps":"3x8",
+        "type":"gym"   
+    },
+    {
+        "id":"e_04",
+        "name":"Dumbbell Lateral Raise",
+        "image":"https://static.strengthlevel.com/images/silhouettes/dumbbell-lateral-raise-256x256.png",
+        "reps":"3x16",
+        "type":"gym"   
+    },
+    {
+        "id":"e_05",
+        "name":"Shoulder Shrug",
+        "image":"https://static.strengthlevel.com/images/silhouettes/dumbbell-shrug-256x256.png",
+        "reps":"3x5",
+        "type":"gym"   
+    },
+    {
+        "id":"e_06",
+        "name":"Front Raises",
+        "image":"https://static.strengthlevel.com/images/silhouettes/dumbbell-front-raise-256x256.png",
+        "reps":"3x5",
+        "type":"gym"   
+    },
+    {
+        "id":"e_07",
+        "name":"Upright Row",
+        "image":"https://static.strengthlevel.com/images/silhouettes/upright-row-256x256.png",
+        "reps":"3x8",
+        "type":"gym"   
+    },
+    {
+        "id":"e_08",
+        "name":"Incline Dumbbell Bench Press",
+        "image":"https://static.strengthlevel.com/images/silhouettes/incline-dumbbell-bench-press-256x256.png",
+        "reps":"5x10",
+        "type":"gym"   
+    },
+    {
+        "id":"e_09",
+        "name":"Push Up",
+        "image":"https://static.strengthlevel.com/images/silhouettes/close-grip-push-up-256x256.png",
+        "reps":"5x20",
+        "type":"gym"   
+    },
+    {
+        "id":"e_10",
+        "name":"Squat",
+        "image":"https://static.strengthlevel.com/images/silhouettes/squat-256x256.png",
+        "reps":"5x6" ,
+        "type":"gym"  
+    },
+    {
+        "id":"e_11",
+        "name":"Leg Press",
+        "image":"https://static.strengthlevel.com/images/silhouettes/sled-leg-press-256x256.png",
+        "reps":"3x10",
+        "type":"gym"   
+    },
+    {
+        "id":"e_12",
+        "name":"Leg Extension",
+        "image":"https://static.strengthlevel.com/images/silhouettes/leg-extension-256x256.png",
+        "reps":"3x8" ,
+        "type":"gym"  
+    },
+    {
+        "id":"e_13",
+        "name":"Split Lunges",
+        "image":"https://static.strengthlevel.com/images/silhouettes/dumbbell-lunge-256x256.png",
+        "reps":"3x12",
+        "type":"gym"   
+    },
+    {
+        "id":"e_14",
+        "name":"Hip Thrust",
+        "image":"https://static.strengthlevel.com/images/silhouettes/hip-thrust-256x256.png",
+        "reps":"3x10",
+        "type":"gym"   
+    },
+    {
+        "id":"e_15",
+        "name":"Pull up",
+        "image":"https://static.strengthlevel.com/images/silhouettes/pull-ups-256x256.png",
+        "reps":"4x8" ,
+        "type":"gym"  
+    },
+    {
+        "id":"e_16",
+        "name":"Lat Pulldown",
+        "image":"https://static.strengthlevel.com/images/silhouettes/lat-pulldown-256x256.png",
+        "reps":"3x10",
+        "type":"gym"   
+    },
+    {
+        "id":"e_17",
+        "name":"Deadlift",
+        "image":"https://static.strengthlevel.com/images/silhouettes/deadlift-256x256.png",
+        "reps":"5x5" ,
+        "type":"gym"  
+    },
+    {
+        "id":"e_18",
+        "name":"Body Row",
+        "image":"https://static.strengthlevel.com/images/silhouettes/romanian-deadlift-256x256.png",
+        "reps":"3x8" ,
+        "type":"gym"  
+    },
+    {
+        "id":"e_19",
+        "name":"Face Pull",
+        "image":"https://static.strengthlevel.com/images/silhouettes/face-pull-256x256.png",
+        "reps":"3x10",
+        "type":"gym"   
+    },
+    {
+        "id":"e_20",
+        "name":"Bicep Curl",
+        "image":"https://static.strengthlevel.com/images/silhouettes/hammer-curl-256x256.png",
+        "reps":"3x12",
+        "type":"gym"   
+    },
+    {
+        "id":"e_21",
+        "name":"Barbell Curl",
+        "image":"https://static.strengthlevel.com/images/silhouettes/cheat-curl-256x256.png",
+        "reps":"4x8" ,
+        "type":"gym"  
+    },
+    {
+        "id":"e_22",
+        "name":"Tricep Dips",
+        "image":"https://static.strengthlevel.com/images/silhouettes/dips-256x256.png",
+        "reps":"3x10",
+        "type":"gym"   
+    },
+    {
+        "id":"e_23",
+        "name":"Skull Crusher",
+        "image":"https://static.strengthlevel.com/images/silhouettes/lying-tricep-extension-256x256.png",
+        "reps":"3x16",
+        "type":"gym"   
+    },
+    {
+        "id":"e_24",
+        "name":"Tricep Pushdown",
+        "image":"https://static.strengthlevel.com/images/silhouettes/tricep-pushdown-256x256.png",
+        "reps":"3x12",
+        "type":"gym"   
+    },
+    {
+        "id":"e_25",
+        "name":"Sit up",
+        "image":"https://static.strengthlevel.com/images/silhouettes/sit-ups-256x256.png",
+        "reps":"4x16",
+        "type":"gym"   
+    },
+    {
+        "id":"e_26",
+        "name":"Leg Raise",
+        "image":"https://static.strengthlevel.com/images/silhouettes/lying-leg-raise-256x256.png",
+        "reps":"4x10",
+        "type":"gym"   
+    },
+    {
+        "id":"e_27",
+        "name":"Jumping Jack",
+        "image":"https://static.strengthlevel.com/images/silhouettes/jumping-jack-256x256.png",
+        "reps":"60s",
+        "type":"cardio"  
+    },
+    {
+        "id":"e_28",
+        "name":"Mountain Climber",
+        "image":"https://static.strengthlevel.com/images/silhouettes/mountain-climbers-256x256.png",
+        "reps":"45s",
+        "type":"cardio"   
+    },
+    {
+        "id":"e_29",
+        "name":"Flutter Kicks",
+        "image":"https://static.strengthlevel.com/images/silhouettes/flutter-kicks-256x256.png",
+        "reps":"45s",
+        "type":"cardio"   
+    },
+    {
+        "id":"e_30",
+        "name":"Burpees",
+        "image":"https://static.strengthlevel.com/images/silhouettes/burpees-256x256.png",
+        "reps":"60s",
+        "type":"cardio"   
+    },
+    {
+        "id":"e_31",
+        "name":"Mountain Climber",
+        "image":"https://static.strengthlevel.com/images/silhouettes/cheat-curl-256x256.png",
+        "reps":"60s",
+        "type":"cardio"   
+    },
+    {
+        "id":"e_32",
+        "name":"Jogging",
+        "image":"https://w7.pngwing.com/pngs/372/51/png-transparent-jogging-silhouette-running-man-silhouette-sport-monochrome-running.png",
+        "type":"Exercise"  
+    },
+    {
+        "id":"e_32",
+        "name":"Football",
+        "image":"https://i.pinimg.com/originals/30/71/d7/3071d7ffff6a28f474b5ca20c6801810.png",
+        "type":"Exercise"  
+    },
+    {
+        "id":"e_33",
+        "name":"Basketball",
+        "image":"https://static.vecteezy.com/system/resources/previews/022/599/214/non_2x/silhouette-of-a-basketball-player-carrying-a-basketball-free-png.png",
+        "type":"Exercise"  
+    },
+    {
+        "id":"e_34",
+        "name":"Yoga",
+        "image":"https://cdn.pixabay.com/photo/2018/02/18/19/45/yoga-3163283_960_720.png",
+        "type":"Exercise"  
+    },
+    {
+        "id":"e_35",
+        "name":"Pilates",
+        "image":"https://cdn.pixabay.com/photo/2018/01/16/06/19/silhouette-3085378_1280.png",
+        "type":"Exercise"  
+    },
+    {
+        "id":"e_36",
+        "name":"Badminton",
+        "image":"https://www.onlygfx.com/wp-content/uploads/2018/04/badminton-sport-silhouette-2-656x1024.png",
+        "type":"Exercise"  
+    },
+    {
+        "id":"e_37",
+        "name":"Swimming",
+        "image":"https://thumb.silhouette-ac.com/t/41/41fc61c28d1949af17dbe967e205b4a1_t.jpeg",
+        "type":"Exercise"  
+    },
+    {
+        "id":"e_38",
+        "name":"Cycling",
+        "image":"https://img.lovepik.com/free-png/20210923/lovepik-cycling-silhouette-png-image_401238227_wh1200.png",
+        "type":"Exercise"  
+    } 
+]    

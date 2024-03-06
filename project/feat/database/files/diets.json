@@ -1,0 +1,54 @@
+[
+    {
+        "id":"d_01",
+        "name": "Ketogenic Diet",
+        "image":"https://cdn-icons-png.flaticon.com/512/5286/5286592.png",
+        "description":"A ketogenic diet is a high fat and low carb diet. Reducing carbs may put your body in ketosis, which causes it to use fat for energy. This may help with weight loss.",
+        "meals":[],
+        "protein":"20",
+        "fats":"70",
+        "carbs":"10",
+        "Cal":"2000",
+        "prep":"25"
+
+    },
+    {
+        "id":"d_02",
+        "name": "Pescatarian Diet",
+        "image":"https://cdn-icons-png.freepik.com/256/454/454359.png",
+        "description":"A pescatarian diet is a vegetarian diet that includes fish and other seafood. People following a pescatarian diet do not eat any meat or poultry.",
+        "meals":[],
+        "protein":"20",
+        "fats":"30",
+        "carbs":"50",
+        "Cal":"1800",
+        "prep":"35"
+
+    },
+    {
+        "id":"d_03",
+        "name": "Mediterranean Diet",
+        "image":"https://cdn-icons-png.flaticon.com/512/2079/2079312.png",
+        "description":"The Mediterranean Diet incorporate the nutritious foods that people traditionally eat in the areas surrounding the Mediterranean Sea. It includes plenty of whole grains, fruits, vegetables, beans and lentils as well as seafood and healthy fats like olive oil and nuts.",
+        "meals":[],
+        "protein":"15",
+        "fats":"30",
+        "carbs":"55",
+        "Cal":"2200",
+        "prep":"25"
+
+    },
+    {
+        "id":"d_04",
+        "name": "Low Carbohydrate Diet",
+        "image":"https://icons.veryicon.com/png/o/food--drinks/fruit-icon-1/avocado-23.png",
+        "description":"A diet that consumes minimal amount of carbohydrate have been associated with several health benefits. People often use them to support weight loss and manage blood sugar levels.",
+        "meals":[],
+        "protein":"25",
+        "fats":"50",
+        "carbs":"25",
+        "Cal":"1500",
+        "prep":"20"
+
+    }
+]

@@ -9,10 +9,10 @@ import 'firebase_options.dart';
 import 'database/auth.dart';
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -30,18 +30,15 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
           useMaterial3: true,
         ),
-        home: HomePage()
-
-        // StreamBuilder(
-        //   stream: Auth().authStateChanges,
-        //   builder: (context, snapshot) {
-        //     if (snapshot.hasData) {
-        //       return HomePage();
-        //     } else {
-        //       return LoginPage();
-        //     }
-        //   },
-        // )
-        );
+        home: StreamBuilder(
+          stream: Auth().authStateChanges,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return HomePage();
+            } else {
+              return LoginPage();
+            }
+          },
+        ));
   }
 }
