@@ -1,7 +1,10 @@
+import 'package:feat/components/alert.dart';
 import 'package:feat/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'constants.dart';
+import 'database/user.dart';
+import 'localData.dart';
 import 'signup.dart';
 import 'database/auth.dart';
 
@@ -17,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: size.height,
         width: size.width,
@@ -32,12 +36,12 @@ class _LoginPageState extends State<LoginPage> {
                 )),
             Expanded(
                 flex: 8,
-                child: Card(
-                  shape: RoundedRectangleBorder(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(50),
                           topRight: Radius.circular(50))),
-                  color: Colors.white,
                   child: Padding(
                     padding: EdgeInsets.all(size.width * 0.05),
                     child: SizedBox(
@@ -97,24 +101,26 @@ class _LoginPageState extends State<LoginPage> {
                                   padding: EdgeInsets.all(20),
                                   child: FilledButton.tonal(
                                       onPressed: () async {
-                                        Auth().signin(
+                                        String op = await Auth().signin(
                                             email: email.text,
                                             password: password.text);
-                                        setState(() {});
-                                        if (FirebaseAuth.instance.currentUser !=
-                                            null) {
+
+                                        if (op == 'success') {
+                                          user = await getDetails();
+                                          localdata = await getLocalData();
+                                          setState(() {});
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     HomePage()),
                                           );
+                                          AlertPopUp(context, 'success',
+                                              'Welcome to FEAT!');
+                                        } else {
+                                          AlertPopUp(context, 'error',
+                                              'Something went wrong, try again');
                                         }
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => HomePage()),
-                                        );
                                       },
                                       style: ButtonStyle(
                                           shape: MaterialStateProperty.all<

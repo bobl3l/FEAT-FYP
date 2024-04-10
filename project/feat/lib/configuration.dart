@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
-import 'package:horizontal_picker/horizontal_picker.dart';
 import 'homescreen.dart';
 import 'database/database.dart';
 
@@ -46,6 +44,7 @@ class _ConfigurationState extends State<Configuration> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
           height: size.height,
           width: size.width,
@@ -107,6 +106,8 @@ class _ConfigurationState extends State<Configuration> {
                                                 horizontal: size.width * 0.04,
                                                 vertical: size.width * 0.04))),
                                     child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'Continue',
@@ -240,141 +241,138 @@ class _ConfigurationState extends State<Configuration> {
                                     ),
                                   )
                                 : SizedBox.shrink(),
-                            Card(
-                              shape: RoundedRectangleBorder(
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(30),
                                       topRight: Radius.circular(30))),
-                              color: Colors.white,
-                              child: SizedBox(
-                                height: size.height * 0.15,
-                                width: size.width,
-                                child: Padding(
-                                  padding: EdgeInsets.all(35),
-                                  child: steps == 6
-                                      ? FilledButton.tonal(
-                                          onPressed: () {
-                                            userSetup(
-                                                name,
-                                                weight,
-                                                height,
-                                                genderselect,
-                                                fitselect,
-                                                dietselect);
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      HomePage()),
-                                            );
-                                          },
-                                          style: ButtonStyle(
-                                              shape: MaterialStateProperty.all<
-                                                      RoundedRectangleBorder>(
-                                                  RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10))),
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      primaryColor),
-                                              padding: MaterialStatePropertyAll(
-                                                  EdgeInsets.symmetric(
-                                                      horizontal:
-                                                          size.width * 0.06,
-                                                      vertical:
-                                                          size.width * 0.04))),
-                                          child: Text(
-                                            'Start your journey now!',
-                                            style: TextStyle(
-                                                fontSize: size.width * 0.045,
-                                                color: primaryDarkColor,
-                                                fontWeight: FontWeight.bold),
-                                          ))
-                                      : Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            steps < 1
-                                                ? SizedBox.shrink()
-                                                : TextButton(
-                                                    onPressed: () {
-                                                      setState(() {
-                                                        steps--;
-                                                      });
-                                                    },
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      children: [
-                                                        Icon(
-                                                          Icons
-                                                              .navigate_before_rounded,
-                                                          size: 24.0,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 5,
-                                                        ),
-                                                        Text(
-                                                          'Back',
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  size.width *
-                                                                      0.04,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                      ],
-                                                    ),
+                              height: size.height * 0.15,
+                              width: size.width,
+                              child: Padding(
+                                padding: EdgeInsets.all(35),
+                                child: steps == 6
+                                    ? FilledButton.tonal(
+                                        onPressed: () {
+                                          userSetup(
+                                              name,
+                                              weight,
+                                              height,
+                                              genderselect,
+                                              fitselect,
+                                              dietselect);
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomePage()),
+                                          );
+                                        },
+                                        style: ButtonStyle(
+                                            shape: MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10))),
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    primaryColor),
+                                            padding: MaterialStatePropertyAll(
+                                                EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        size.width * 0.06,
+                                                    vertical:
+                                                        size.width * 0.04))),
+                                        child: Text(
+                                          'Start your journey now!',
+                                          style: TextStyle(
+                                              fontSize: size.width * 0.045,
+                                              color: primaryDarkColor,
+                                              fontWeight: FontWeight.bold),
+                                        ))
+                                    : Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          steps < 1
+                                              ? SizedBox.shrink()
+                                              : TextButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      steps--;
+                                                    });
+                                                  },
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Icon(
+                                                        Icons
+                                                            .navigate_before_rounded,
+                                                        size: 24.0,
+                                                      ),
+                                                      SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      Text(
+                                                        'Back',
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                size.width *
+                                                                    0.04,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                    ],
                                                   ),
-                                            FilledButton.tonal(
-                                              onPressed: () {
-                                                setState(() {
-                                                  steps++;
-                                                });
-                                              },
-                                              style: ButtonStyle(
-                                                  shape: MaterialStateProperty.all<
-                                                          RoundedRectangleBorder>(
-                                                      RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius.circular(
-                                                                  10))),
-                                                  backgroundColor:
-                                                      MaterialStateProperty.all(
-                                                          primaryColor),
-                                                  padding: MaterialStatePropertyAll(
-                                                      EdgeInsets.symmetric(
-                                                          horizontal:
-                                                              size.width * 0.04,
-                                                          vertical:
-                                                              size.width * 0.04))),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    'Continue',
-                                                    style: TextStyle(
-                                                        fontSize:
+                                                ),
+                                          FilledButton.tonal(
+                                            onPressed: () {
+                                              setState(() {
+                                                steps++;
+                                              });
+                                            },
+                                            style: ButtonStyle(
+                                                shape: MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                10))),
+                                                backgroundColor:
+                                                    MaterialStateProperty.all(
+                                                        primaryColor),
+                                                padding: MaterialStatePropertyAll(
+                                                    EdgeInsets.symmetric(
+                                                        horizontal:
                                                             size.width * 0.04,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 5,
-                                                  ),
-                                                  Icon(
-                                                    Icons.navigate_next_rounded,
-                                                    size: size.width * 0.05,
-                                                  ),
-                                                ],
-                                              ),
+                                                        vertical: size.width * 0.04))),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  'Continue',
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          size.width * 0.04,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Icon(
+                                                  Icons.navigate_next_rounded,
+                                                  size: size.width * 0.05,
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                             )
                           ],

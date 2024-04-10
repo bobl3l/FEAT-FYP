@@ -86,10 +86,10 @@ class _SignupPageState extends State<SignupPage> {
                             padding: EdgeInsets.all(20),
                             child: FilledButton.tonal(
                                 onPressed: () async {
-                                  Auth().signup(
+                                  await Auth().signup(
                                       email: email.text,
                                       password: password.text);
-                                  Auth().signin(
+                                  await Auth().signin(
                                       email: email.text,
                                       password: password.text);
                                   setState(() {});

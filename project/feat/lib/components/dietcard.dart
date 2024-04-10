@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:feat/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:feat/dietdes.dart';
+import 'package:feat/diet/dietdes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DietCard extends StatefulWidget {

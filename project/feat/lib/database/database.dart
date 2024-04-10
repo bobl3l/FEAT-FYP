@@ -26,3 +26,17 @@ void userSetup(
       .set(newuser)
       .onError((e, _) => print("Error writing document: $e"));
 }
+
+Future<void> update(
+    String collection, String doc, String variable, dynamic input) async {
+  final newInput = db.collection(collection).doc(doc);
+  await newInput.update({variable: input});
+}
+
+Future<void> weightRecord(String weight) async {
+  String? uid = await storage.read(key: 'uid');
+  db.collection("users").doc(uid).update({
+    "weight": FieldValue.arrayUnion([weight]),
+    "date": FieldValue.arrayUnion([DateTime.now()])
+  });
+}
