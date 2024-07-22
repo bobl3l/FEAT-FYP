@@ -1,8 +1,5 @@
-import 'package:feat/components/alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:feat/constants.dart';
-import 'package:flutter/material.dart';
-import 'user.dart';
 
 class Auth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -29,6 +26,10 @@ class Auth {
     }
 
     return o;
+  }
+
+  Future<void> newpassword(String password) async {
+    await FirebaseAuth.instance.currentUser?.updatePassword(password);
   }
 
   Future<void> signup({required String email, required String password}) async {

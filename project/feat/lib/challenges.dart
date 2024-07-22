@@ -107,6 +107,7 @@ class _WorkoutCardState extends State<ChallengeCard> {
                 onTap: () {
                   for (String i in widget.users) {
                     if (i == user!.id) {
+                      Navigator.pop(context);
                       Navigator.push(
                           context,
                           MaterialPageRoute(

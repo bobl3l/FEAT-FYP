@@ -12,10 +12,14 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  bool _passwordVisible = false;
+  bool _cpasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: size.height,
         width: size.width,
@@ -45,11 +49,21 @@ class _SignupPageState extends State<SignupPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(
-                            'Sign up',
-                            style: TextStyle(
-                                fontSize: size.width * 0.08,
-                                fontWeight: FontWeight.bold),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Sign up',
+                                style: TextStyle(
+                                    fontSize: size.width * 0.08,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: Icon(Icons.arrow_back))
+                            ],
                           ),
                           Text('Start your fitness journey now...')
                         ],
@@ -71,16 +85,46 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                           TextFormField(
                             controller: password,
-                            decoration: const InputDecoration(
-                                icon: Icon(Icons.lock_outline_rounded),
-                                labelText: 'Password',
-                                contentPadding: EdgeInsets.all(10)),
+                            obscureText: !_passwordVisible,
+                            decoration: InputDecoration(
+                              icon: Icon(Icons.lock_outline_rounded),
+                              labelText: 'Password',
+                              contentPadding: EdgeInsets.all(10),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _passwordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                                onPressed: () {
+                                  // Update the state i.e. toogle the state of passwordVisible variable
+                                  setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  });
+                                },
+                              ),
+                            ),
                           ),
                           TextFormField(
-                            decoration: const InputDecoration(
-                                icon: Icon(Icons.lock_outline_rounded),
-                                labelText: 'Confirm Password',
-                                contentPadding: EdgeInsets.all(10)),
+                            obscureText: !_cpasswordVisible,
+                            decoration: InputDecoration(
+                              icon: Icon(Icons.lock_outline_rounded),
+                              labelText: 'Confirm Password',
+                              contentPadding: EdgeInsets.all(10),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _cpasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                                onPressed: () {
+                                  // Update the state i.e. toogle the state of passwordVisible variable
+                                  setState(() {
+                                    _cpasswordVisible = !_cpasswordVisible;
+                                  });
+                                },
+                              ),
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.all(20),

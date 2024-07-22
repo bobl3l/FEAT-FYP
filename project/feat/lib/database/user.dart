@@ -10,6 +10,7 @@ class UserDetails {
   final dynamic water;
   final dynamic diet;
   final dynamic workout;
+  final dynamic name;
   UserDetails(
       {this.id,
       this.calories,
@@ -17,7 +18,8 @@ class UserDetails {
       this.exercise,
       this.sleep,
       this.water,
-      this.workout});
+      this.workout,
+      this.name});
 
   factory UserDetails.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -32,6 +34,7 @@ class UserDetails {
       sleep: data?['sleep'],
       water: data?['water'],
       workout: data?['workout'],
+      name: data?['name'],
     );
   }
   Map<String, dynamic> toFirestore() {
@@ -43,6 +46,7 @@ class UserDetails {
       if (sleep != null) "sleep": sleep,
       if (water != null) "water": water,
       if (workout != null) "workout": workout,
+      if (name != null) "name": name,
     };
   }
 }

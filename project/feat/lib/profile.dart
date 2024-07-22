@@ -1,17 +1,18 @@
 import 'package:feat/components/achievement.dart';
 import 'package:feat/database/auth.dart';
+import 'package:feat/database/user.dart';
 import 'package:feat/login.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'constants.dart';
 import 'components/navbar.dart';
-import 'homescreen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 import 'components/chart.dart';
 import 'components/alert.dart';
+import 'database/database.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -189,23 +190,31 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                   borderRadius: BorderRadius.circular(15),
                                   color: Colors.white),
-                              child: GridView.builder(
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                          mainAxisSpacing: size.width * 0.015,
-                                          crossAxisSpacing: size.width * 0.015,
-                                          crossAxisCount: 3),
-                                  itemCount: snap['achievements'].length,
-                                  itemBuilder: (context, index) {
-                                    return Achievement(
-                                        des: snap['achievements'][index]['des'],
-                                        img: snap['achievements'][index]
-                                            ['image'],
-                                        title: snap['achievements'][index]
-                                            ['title']);
-                                  }),
+                              child: snap['achievements'] != null
+                                  ? GridView.builder(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                              mainAxisSpacing:
+                                                  size.width * 0.015,
+                                              crossAxisSpacing:
+                                                  size.width * 0.015,
+                                              crossAxisCount: 3),
+                                      itemCount: snap['achievements'].length,
+                                      itemBuilder: (context, index) {
+                                        return Achievement(
+                                            des: snap['achievements'][index]
+                                                ['des'],
+                                            img: snap['achievements'][index]
+                                                ['image'],
+                                            title: snap['achievements'][index]
+                                                ['title']);
+                                      })
+                                  : Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: Text(
+                                          'You do not have any achievement yet, you can earn achievements through recording your healthy living activities and progresses.')),
                             ),
                           ],
                         ),
@@ -303,82 +312,281 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 void editProfile(BuildContext context) {
-  List<String> list = <String>['Calories', 'Water', 'Exercise', 'Sleep'];
-  String dropdownValue = list.first;
-
-  Size size = MediaQuery.of(context).size;
   showDialog<String>(
     context: context,
-    builder: (BuildContext context) => AlertDialog(
-      contentPadding: EdgeInsets.all(8),
+    builder: (BuildContext context) => EditProfile(),
+  );
+}
+
+class EditProfile extends StatefulWidget {
+  @override
+  _EditProfileState createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  bool resetworkout = false;
+  bool resetdiet = false;
+  bool editing = true;
+  bool newpw = false;
+
+  TextEditingController name = TextEditingController(text: user!.name);
+  TextEditingController password = TextEditingController(text: "********");
+  TextEditingController calories =
+      TextEditingController(text: user!.calories.toString());
+  TextEditingController exercise =
+      TextEditingController(text: user!.exercise.toString());
+  TextEditingController water =
+      TextEditingController(text: user!.water.toString());
+  TextEditingController sleep =
+      TextEditingController(text: user!.sleep.toString());
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return AlertDialog(
+      contentPadding: EdgeInsets.all(20),
       title: Text(
         textAlign: TextAlign.center,
         'Update your profile',
         style: GoogleFonts.lalezar(fontWeight: FontWeight.bold),
       ),
-      content: Container(
-        width: size.width * 0.8,
-        height: size.height * 0.6,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'name:',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
-                ),
-                SizedBox(
-                  width: size.width * 0.5,
-                  child: TextField(
-                    cursorHeight: size.height * 0.03,
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(4),
-                        border: OutlineInputBorder(),
-                        filled: true,
-                        fillColor: Colors.white),
-                  ),
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                DropdownButton<String>(
-                  value: dropdownValue,
-                  icon: const Icon(Icons.arrow_downward),
-                  elevation: 16,
-                  onChanged: (String? value) {
-                    // This is called when the user selects an item.
-
-                    dropdownValue = value!;
+      content: SingleChildScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(8)),
+          width: size.width * 0.75,
+          height: size.height * 0.6,
+          padding: EdgeInsets.all(12),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      editing = !editing;
+                    });
                   },
-                  items: list.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
+                  icon: editing
+                      ? Icon(
+                          Icons.edit_document,
+                          color: Colors.grey.shade400,
+                        )
+                      : Icon(
+                          Icons.check,
+                          color: Colors.blueGrey,
+                        )),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Text(
+                'Username',
+                style: GoogleFonts.inter(
+                    color: Colors.grey, fontSize: size.width * 0.04),
+              ),
+            ),
+            TextField(
+              controller: name,
+              readOnly: editing,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(4),
+                  border: OutlineInputBorder(borderSide: BorderSide.none),
+                  filled: true,
+                  fillColor: Colors.grey.shade200),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Text(
+                'Password',
+                style: GoogleFonts.inter(
+                    color: Colors.grey, fontSize: size.width * 0.04),
+              ),
+            ),
+            TextField(
+              onChanged: (value) {
+                setState(() {
+                  newpw = true;
+                });
+              },
+              controller: password,
+              readOnly: editing,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(4),
+                  border: OutlineInputBorder(borderSide: BorderSide.none),
+                  filled: true,
+                  fillColor: Colors.grey.shade200),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        'Calories',
+                        style: GoogleFonts.inter(
+                            color: Colors.grey, fontSize: size.width * 0.04),
+                      ),
+                    ),
+                    SizedBox(
+                      width: size.width * 0.28,
+                      child: TextField(
+                        readOnly: editing,
+                        controller: calories,
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(4),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
+                            filled: true,
+                            fillColor: Colors.grey.shade200),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: size.width * 0.5,
-                  child: TextField(
-                    cursorHeight: size.height * 0.03,
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(4),
-                        border: OutlineInputBorder(),
-                        filled: true,
-                        fillColor: Colors.white),
-                  ),
-                )
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        'Exericse',
+                        style: GoogleFonts.inter(
+                            color: Colors.grey, fontSize: size.width * 0.04),
+                      ),
+                    ),
+                    SizedBox(
+                      width: size.width * 0.28,
+                      child: TextField(
+                        readOnly: editing,
+                        controller: exercise,
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(4),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
+                            filled: true,
+                            fillColor: Colors.grey.shade200),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
-            FilledButton(onPressed: () {}, child: Text('reset diet plan')),
-            FilledButton(onPressed: () {}, child: Text('reset workout plan'))
-          ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        'Water',
+                        style: GoogleFonts.inter(
+                            color: Colors.grey, fontSize: size.width * 0.04),
+                      ),
+                    ),
+                    SizedBox(
+                      width: size.width * 0.28,
+                      child: TextField(
+                        readOnly: editing,
+                        controller: water,
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(4),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
+                            filled: true,
+                            fillColor: Colors.grey.shade200),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        'Sleep',
+                        style: GoogleFonts.inter(
+                            color: Colors.grey, fontSize: size.width * 0.04),
+                      ),
+                    ),
+                    SizedBox(
+                      width: size.width * 0.28,
+                      child: TextField(
+                        readOnly: editing,
+                        controller: sleep,
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(4),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
+                            filled: true,
+                            fillColor: Colors.grey.shade200),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Text(
+                'Reset plans',
+                style: GoogleFonts.inter(
+                    color: Colors.grey, fontSize: size.width * 0.04),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FilledButton(
+                    style: ButtonStyle(
+                        padding: MaterialStatePropertyAll(EdgeInsets.symmetric(
+                          horizontal: size.width * 0.032,
+                        )),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                        )),
+                        foregroundColor: MaterialStatePropertyAll(
+                            resetworkout ? Colors.white : Colors.grey),
+                        backgroundColor: MaterialStatePropertyAll(resetworkout
+                            ? primaryDarkColor
+                            : Colors.grey.shade200)),
+                    onPressed: () {
+                      setState(() {
+                        resetworkout = !resetworkout;
+                      });
+                    },
+                    child: Text('Reset workout')),
+                FilledButton(
+                    style: ButtonStyle(
+                        padding: MaterialStatePropertyAll(EdgeInsets.symmetric(
+                          horizontal: size.width * 0.032,
+                        )),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                        )),
+                        foregroundColor: MaterialStatePropertyAll(
+                            resetworkout ? Colors.white : Colors.grey),
+                        backgroundColor: MaterialStatePropertyAll(resetdiet
+                            ? primaryDarkColor
+                            : Colors.grey.shade200)),
+                    onPressed: () {
+                      setState(() {
+                        resetdiet = !resetdiet;
+                      });
+                    },
+                    child: Text('Reset diet plan')),
+              ],
+            )
+          ]),
         ),
       ),
       actions: <Widget>[
@@ -390,10 +598,32 @@ void editProfile(BuildContext context) {
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () async {
+            String uid = await Auth().getUID();
+            if (resetdiet) {
+              await update("users", uid, 'diet', null);
+            }
+            if (resetworkout) {
+              await update("users", uid, 'workout', null);
+            }
+            if (newpw) {
+              await Auth().newpassword(password.text);
+            }
+            Map<String, dynamic> data = {
+              "name": name.text,
+              "calories": double.parse(calories.text),
+              "water": double.parse(water.text),
+              "sleep": double.parse(sleep.text),
+              "exercise": double.parse(exercise.text)
+            };
+            await bulkupdate("users", uid, data);
+            user = await getDetails();
+            Navigator.pop(context);
+            AlertPopUp(context, "success", "You have updated your profile");
+          },
           child: const Text('Make changes'),
         ),
       ],
-    ),
-  );
+    );
+  }
 }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
+import 'database/user.dart';
 import 'homescreen.dart';
 import 'database/database.dart';
+import 'localData.dart';
+import 'components/alert.dart';
 
 TextEditingController weight = TextEditingController(text: '--');
 TextEditingController nameInput = TextEditingController();
@@ -11,9 +14,9 @@ double w = 70;
 double h = 170;
 TextEditingController height = TextEditingController(text: '--');
 List gender = <String>["Male", "Female", "Non-binary"];
-var genderselect = "";
+String genderselect = "";
 List fit = <String>["Loss Weight", "Build Muscle", "Endurance Training"];
-var fitselect = "";
+String fitselect = "";
 List diet = <String>[
   "Halal",
   "Vegetarian",
@@ -22,7 +25,7 @@ List diet = <String>[
   "Pescatarian",
   "No restriction"
 ];
-var dietselect = "";
+String dietselect = "";
 List config = [
   config1(),
   config2(),
@@ -253,20 +256,25 @@ class _ConfigurationState extends State<Configuration> {
                                 padding: EdgeInsets.all(35),
                                 child: steps == 6
                                     ? FilledButton.tonal(
-                                        onPressed: () {
-                                          userSetup(
+                                        onPressed: () async {
+                                          await userSetup(
                                               name,
-                                              weight,
-                                              height,
+                                              w.toString(),
+                                              h.toString(),
                                               genderselect,
                                               fitselect,
                                               dietselect);
+                                          user = await getDetails();
+                                          await resetLocalData();
+                                          localdata = await getLocalData();
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     HomePage()),
                                           );
+                                          AlertPopUp(context, "success",
+                                              "Welcome to FEAT!");
                                         },
                                         style: ButtonStyle(
                                             shape: MaterialStateProperty.all<
@@ -500,10 +508,10 @@ class _Config2State extends State<config2> {
             value: w,
             divisions: 100,
             label: '${w.round()}',
-            onChanged: (o) {
+            onChanged: (double o) {
               setState(() {
                 w = o;
-                weight.text = o.toString();
+                weight.text = w.toString();
               });
             },
           ),
@@ -602,10 +610,10 @@ class _Config3State extends State<config3> {
             value: h,
             divisions: 60,
             label: '${h.round()}',
-            onChanged: (o) {
+            onChanged: (double o) {
               setState(() {
                 h = o;
-                height.text = o.toString();
+                height.text = h.toString();
               });
             },
           ),

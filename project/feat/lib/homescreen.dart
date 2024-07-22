@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:feat/diet/yourdiet.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -525,7 +526,13 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 17),
                                 ),
                                 TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => YourDiet()),
+                                    );
+                                  },
                                   child: Text(
                                     'Add Meal >>',
                                     style: GoogleFonts.inter(

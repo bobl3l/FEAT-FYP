@@ -51,16 +51,16 @@ class _NutritionPageState extends State<NutritionPage> {
                           physics: AlwaysScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
                             return DietCard(
-                              diet: snap[index]['name'],
-                              description: snap[index]['description'],
-                              img: snap[index]['image'],
-                              color: snap[index]['color'],
-                              protein: snap[index]['protein'],
-                              fat: snap[index]['fats'],
-                              carb: snap[index]['carbs'],
-                              cal: snap[index]['Cal'],
-                              time: snap[index]['prep'],
-                            );
+                                diet: snap[index]['name'],
+                                description: snap[index]['description'],
+                                img: snap[index]['image'],
+                                color: snap[index]['color'],
+                                protein: snap[index]['protein'],
+                                fat: snap[index]['fats'],
+                                carb: snap[index]['carbs'],
+                                cal: snap[index]['Cal'],
+                                time: snap[index]['prep'],
+                                id: snap[index]['id']);
                           });
                     } else {
                       return Padding(

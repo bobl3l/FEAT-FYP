@@ -14,6 +14,7 @@ class DietCard extends StatefulWidget {
   String carb;
   String cal;
   String time;
+  String id;
   DietCard(
       {required this.diet,
       required this.description,
@@ -23,7 +24,8 @@ class DietCard extends StatefulWidget {
       required this.fat,
       required this.carb,
       required this.cal,
-      required this.time});
+      required this.time,
+      required this.id});
 
   @override
   _DietCardState createState() => _DietCardState();
@@ -39,12 +41,14 @@ class _DietCardState extends State<DietCard> {
             context,
             MaterialPageRoute(
                 builder: (context) => DietDescription(
-                    protein: widget.protein,
-                    fat: widget.fat,
-                    carb: widget.carb,
-                    cal: widget.cal,
-                    name: widget.diet,
-                    time: widget.time)),
+                      protein: widget.protein,
+                      fat: widget.fat,
+                      carb: widget.carb,
+                      cal: widget.cal,
+                      name: widget.diet,
+                      time: widget.time,
+                      id: widget.id,
+                    )),
           );
         },
         child: Container(

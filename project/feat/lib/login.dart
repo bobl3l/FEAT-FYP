@@ -1,7 +1,6 @@
 import 'package:feat/components/alert.dart';
 import 'package:feat/homescreen.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'constants.dart';
 import 'database/user.dart';
 import 'localData.dart';
@@ -16,6 +15,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  bool _passwordVisible = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -91,11 +91,25 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 TextFormField(
                                   controller: password,
-                                  decoration: const InputDecoration(
-                                      icon: Icon(Icons.lock_outline_rounded),
-                                      labelText: 'Password',
-                                      contentPadding: EdgeInsets.all(10)),
-                                  onSaved: (String? value) {},
+                                  obscureText: !_passwordVisible,
+                                  decoration: InputDecoration(
+                                    icon: Icon(Icons.lock_outline_rounded),
+                                    labelText: 'Password',
+                                    contentPadding: EdgeInsets.all(10),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        _passwordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                      ),
+                                      onPressed: () {
+                                        // Update the state i.e. toogle the state of passwordVisible variable
+                                        setState(() {
+                                          _passwordVisible = !_passwordVisible;
+                                        });
+                                      },
+                                    ),
+                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(20),
@@ -107,8 +121,12 @@ class _LoginPageState extends State<LoginPage> {
 
                                         if (op == 'success') {
                                           user = await getDetails();
-                                          localdata = await getLocalData();
-                                          setState(() {});
+                                          if (await dataCheck()) {
+                                            localdata = await getLocalData();
+                                          } else {
+                                            resetLocalData();
+                                            localdata = await getLocalData();
+                                          }
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(

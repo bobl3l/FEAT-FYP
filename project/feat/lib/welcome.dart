@@ -1,4 +1,5 @@
 import 'package:feat/components/alert.dart';
+import 'package:feat/homescreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -138,7 +139,9 @@ class _WelcomePageState extends State<WelcomePage>
                             MaterialPageRoute(
                                 builder: (context) => widget.page),
                           );
-                          AlertPopUp(context, "info", 'welcome back!');
+                          if (widget.page == HomePage()) {
+                            AlertPopUp(context, "info", 'welcome back!');
+                          }
                         },
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all<

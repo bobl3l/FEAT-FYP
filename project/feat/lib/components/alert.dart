@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../leaderboard.dart';
-import '../localData.dart';
 
 void AlertPopUp(BuildContext context, String type, String msg) {
   showGeneralDialog(
@@ -443,10 +442,13 @@ void showDisclaimer(
           ),
         ),
         TextButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => leaderboard),
-          ),
+          onPressed: () {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => leaderboard),
+            );
+          },
           child: const Text('Agree & Continue'),
         ),
       ],

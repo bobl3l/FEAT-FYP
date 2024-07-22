@@ -1,8 +1,11 @@
 import 'package:feat/configuration.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../components/alert.dart';
 import '../constants.dart';
 import '../components/navbar.dart';
+import '../database/auth.dart';
+import '../database/database.dart';
 import '../homescreen.dart';
 import 'dietlist.dart';
 
@@ -13,13 +16,15 @@ class DietDescription extends StatefulWidget {
   String cal;
   String name;
   String time;
+  String id;
   DietDescription(
       {required this.protein,
       required this.fat,
       required this.carb,
       required this.cal,
       required this.name,
-      required this.time});
+      required this.time,
+      required this.id});
   @override
   _DietDescriptionState createState() => _DietDescriptionState();
 }
@@ -204,7 +209,17 @@ class _DietDescriptionState extends State<DietDescription> {
                                   EdgeInsets.symmetric(
                                       horizontal: size.width * 0.07,
                                       vertical: size.width * 0.06))),
-                          onPressed: () {},
+                          onPressed: () async {
+                            String uid = await Auth().getUID();
+                            await update("users", uid, 'diet',
+                                db.collection("diets").doc(widget.id));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                            AlertPopUp(context, 'success',
+                                "You have successfully chosen your diet...");
+                          },
                           child: Text(
                             'Choose this diet',
                             style: TextStyle(
