@@ -1,5 +1,5 @@
 # FEAT - All-in-One Fitness Solution  
-
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1](https://github.com/bobl3l/FEAT-FYP/blob/main/app%20screenshots/welcomegif.gif")
 ## 📌 Overview  
 This project aims to develop an all-in-one fitness solution that provides users with the necessary tools and information to maintain a healthy lifestyle. The application is designed to simplify the process of staying fit by integrating various fitness-related services into a single platform.  
 
